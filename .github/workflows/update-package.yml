@@ -38,7 +38,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         chmod +x lede.sh
         git clone https://github.com/vipboddy/openwrt-packages.git main
-        cd openwrt-packages
+        cd main
         rm -Rf *
         git rm --cache *
         $GITHUB_WORKSPACE/lede.sh
