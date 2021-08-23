@@ -32,22 +32,20 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         git config --global user.email "yj339173747yj2015@outlook.com"
         git config --global user.name "vipboddy"
-
     - name: Clone packages
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x lede.sh
-        git clone https://github.com/vipboddy/openwrt-packages.git lede
-        cd lede
+        git clone https://github.com/vipboddy/openwrt-packages.git openwrt-packages
+        cd openwrt-packages
         rm -Rf *
         git rm --cache *
         $GITHUB_WORKSPACE/lede.sh
-
     - name: Upload
       env: 
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       run: |
-        cd $GITHUB_WORKSPACE/lede
+        cd $GITHUB_WORKSPACE/openwrt-packages
         git add .
         git commit -m "同步源码于$(TZ='Asia/Shanghai' date +%Y年%m月%d号-%H点%M分)"
-        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:lede
+        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:lede 
