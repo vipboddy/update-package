@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [main]
+        target: [lede-18.06]
         
     steps:
     - name: Checkout
@@ -35,17 +35,17 @@ jobs:
     - name: Clone packages
       run: |
         cd $GITHUB_WORKSPACE
-        chmod +x lede.sh
-        git clone https://github.com/vipboddy/openwrt-packages.git openwrt-packages
-        cd openwrt-packages
+        chmod +x ${{matrix.target}}.sh
+        git clone https://github.com/vipboddy/openwrt-packages.git ${{matrix.target}}
+        cd ${{matrix.target}}
         rm -Rf *
         git rm --cache *
-        $GITHUB_WORKSPACE/lede.sh
+        $GITHUB_WORKSPACE/${{matrix.target}}.sh
     - name: Upload
       env: 
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       run: |
-        cd $GITHUB_WORKSPACE/openwrt-packages
+        cd $GITHUB_WORKSPACE/${{matrix.target}}
         git add .
         git commit -m "同步源码于$(TZ='Asia/Shanghai' date +%Y年%m月%d号-%H点%M分)"
-        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:openwrt-packages
+        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:${{matrix.target}}
