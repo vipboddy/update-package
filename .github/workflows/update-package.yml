@@ -30,6 +30,8 @@ jobs:
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install git subversion git-core wget
         sudo timedatectl set-timezone "$TZ"
+        git config --global user.email "yj339173747yj2015@outlook.com"
+        git config --global user.name "vipboddy"
 
     - name: Clone packages
       run: |
