@@ -36,7 +36,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x ${{matrix.target}}.sh
-        git clone https://github.com/vipboddy/openwrt-packages.git ${{matrix.target}}
+        git clone -b lede-18.06 https://github.com/vipboddy/openwrt-packages.git ${{matrix.target}}
         cd ${{matrix.target}}
         rm -Rf *
         git rm --cache *
