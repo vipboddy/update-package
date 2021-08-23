@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [lede]
+        target: [main]
         
     steps:
     - name: Checkout
@@ -45,7 +45,7 @@ jobs:
       env: 
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       run: |
-        cd $GITHUB_WORKSPACE/lede
+        cd $GITHUB_WORKSPACE/openwrt-packages
         git add .
         git commit -m "同步源码于$(TZ='Asia/Shanghai' date +%Y年%m月%d号-%H点%M分)"
-        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:lede 
+        git push --quiet "https://${{secrets.REPO_TOKEN}}@github.com/vipboddy/openwrt-packages.git" HEAD:openwrt-packages
