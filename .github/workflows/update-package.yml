@@ -37,7 +37,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x lede.sh
-        git clone https://github.com/vipboddy/openwrt-packages.git openwrt-packages
+        git clone https://github.com/vipboddy/openwrt-packages.git main
         cd openwrt-packages
         rm -Rf *
         git rm --cache *
