@@ -36,10 +36,9 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         git clone -b lede-18.06 https://github.com/vipboddy/lede.git ${{matrix.target}}
-        cd ${{matrix.target}}
-        rm -Rf *
-        git rm --cache *
-        chmod +x ../scripts/*.sh
+        rm -Rf ${{matrix.target}}/*
+        git rm --cache ${{matrix.target}}/*
+        chmod +x ./scripts/*.sh
         git clone https://github.com/coolsnowwolf/lede ${{matrix.target}}
         cd ${{matrix.target}}
         mkdir customfeeds
