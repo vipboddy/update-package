@@ -119,3 +119,8 @@ popd
 
 # Change default shell to zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
+find ./*/ -name '*.git' -o -name '*.github' | xargs -i rm -rf {}
+find . -name '*.svn' -o -name '*.ipk' | xargs -i rm -rf {}
+find . -name '*.md' -o -name 'LICENSE' | xargs -i rm -rf {}
+find . -name '.gitattributes' -o -name '.gitignore' | xargs -i rm -rf {}
+exit 0
