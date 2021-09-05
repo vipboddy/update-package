@@ -38,7 +38,7 @@ jobs:
         chmod +x scripts/*.sh
         git clone https://github.com/coolsnowwolf/lede ${{matrix.target}}
         cd ${{matrix.target}}
-        ./scripts/project-lede.sh
+        ../scripts/project-lede.sh
 
     - name: Upload
       env: 
