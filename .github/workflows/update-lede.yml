@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [master]
+        target: [lede-18.06]
         
     steps:
     - name: Checkout
