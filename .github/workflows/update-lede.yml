@@ -35,6 +35,9 @@ jobs:
     - name: Clone packages
       run: |
         cd $GITHUB_WORKSPACE
+        git clone -b lede-18.06 https://github.com/vipboddy/lede.git ${{matrix.target}}
+        rm -Rf *
+        git rm --cache *
         chmod +x scripts/*.sh
         git clone https://github.com/coolsnowwolf/lede ${{matrix.target}}
         cd ${{matrix.target}}
