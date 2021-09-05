@@ -35,7 +35,7 @@ jobs:
     - name: Clone packages
       run: |
         cd $GITHUB_WORKSPACE
-        git clone -b lede-18.06 https://github.com/vipboddy/lede.git ${{matrix.target}}
+        git clone -b master https://github.com/vipboddy/lede.git ${{matrix.target}}
         cd ${{matrix.target}}
         rm -Rf *
         git rm --cache *
@@ -46,8 +46,8 @@ jobs:
         mkdir customfeeds
         git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
         git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
-        ./scripts/hook-feeds.sh
-        ./scripts/project-lede.sh
+        ../scripts/hook-feeds.sh
+        ../scripts/project-lede.sh
 
     - name: Upload
       env: 
