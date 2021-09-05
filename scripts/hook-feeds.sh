@@ -57,4 +57,4 @@ sed -i '/src-git luci/d' feeds.conf.default
 echo "src-link luci $luci_feed" >> feeds.conf.default
 
 # Update feeds
-./scripts/feeds update -a
+# ./scripts/feeds update -a
