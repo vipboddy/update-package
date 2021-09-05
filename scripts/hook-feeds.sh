@@ -58,3 +58,8 @@ echo "src-link luci $luci_feed" >> feeds.conf.default
 
 # Update feeds
 # ./scripts/feeds update -a
+find ./*/ -name '*.git' -o -name '*.github' | xargs -i rm -rf {}
+find . -name '*.svn' -o -name '*.ipk' | xargs -i rm -rf {}
+find . -name '*.md' -o -name 'LICENSE' | xargs -i rm -rf {}
+find . -name '.gitattributes' -o -name '.gitignore' | xargs -i rm -rf {}
+exit 0
